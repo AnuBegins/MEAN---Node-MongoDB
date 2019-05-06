@@ -1,0 +1,69 @@
+
+<!---------------   MODAL VIEW for UPDATING item  ----------------------- -->
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" style="opacity:0.9;">
+
+            <div class="modal-header d-flex justify-content-center ">
+                <h3 class="modal-title text-info " >Edit</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
+            </div>
+
+            <div class="modal-body">
+                <form id = 'form' action="" method="POST" >
+
+                    <div class="mx-3">
+                        <div class="md-form mb-0 ">
+                            <input type = "text" name = "name" id = "name"   class="form-control" placeholder= "" />
+                        </div>
+
+                        <div class="md-form mb-0 ">
+                            <input type="text" name = "breed" id="breed" class="form-control "  />
+                        </div>
+
+                        <div class="md-form mb-0 ">
+                            <input type="number" name = "age" id="age"  class="form-control "  />
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-center ">
+                        <button type="submit" class="d-inline btn btn-sm btn-primary">Update</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('base_scripts'); %>
+<script>
+    $('#modalEdit').on('show.bs.modal', function (e) {
+        var a = $(e.relatedTarget) // This event fires immediately when the show instance method is called. If caused by a click, the clicked element is available as the relatedTarget property of the event.
+
+        // Extract info from data-* attributes
+        var editId    = a.data('id');
+        var editName  = a.data('name');
+        var editBreed = a.data('breed');
+        var editAge   = a.data('age');
+
+        console.log("Id: "+editId+"| Name: "+editName+"| Breed: "+editBreed+"| Age: "+editAge);
+
+        // Update the modal's content.
+        var modal = $(this);
+        console.log('the modal', modal)
+        modal.find('#name').val(editName);
+        modal.find('#breed').val(editBreed);
+        modal.find('#age').val(editAge);
+        document.getElementById('form').action = "/dogs/"+editId;
+
+        // document.getElementById('breed').value = editBreed;
+        // document.getElementById('age').value = editAge;
+        // console.log(document.getElementById("name").value);
+        // console.log(document.getElementById("breed").value);
+        // console.log(document.getElementById("age").value);
+        // console.log(document.getElementById("form").action);
+
+    });
+</script>

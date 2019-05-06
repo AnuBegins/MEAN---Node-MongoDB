@@ -1,0 +1,80 @@
+
+<html lang="en">
+    <%- include('base_head'); %>
+
+  <body class="bg">
+        <div class="container text-center mb-5">
+        <!------------	NAVIGATION BAR ---------------- -->
+        <%- include('base_navbar'); %>
+        </div>
+
+        <div class="container mx-auto mt-5 ">
+
+            <div class=".z-depth-4">
+            <h1 class="text-primary">Create user</h1>
+            <form action='/users' method='POST'>
+                <div class="form-group row">
+                    <label class="col-form-label col-sm-2" for="">First Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="first_name" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-sm-2" for="">Last Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="last_name" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-sm-2" for="">Age</label>
+                    <div class="col-sm-2">
+                        <input type="number" name="age" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-sm-2" for="">E-mail</label>
+                    <div class="col-sm-4">
+                        <input type="email" name="email" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-sm btn-success">Create</button>
+            </form>
+
+
+            <!-------------- FLASH Messages------------------------------- -->
+        <!--    <%- JSON.stringify(messages) %>  tip to easily see objects printed in full instead of [object Object] -->
+            <% if(messages.registration) { %> <!-- based on the structure of your messages, determine how to display them -->
+                <% for (var x of messages.registration) { %>
+                <p class="text-danger"><%= x %></p>
+                <% } %>
+            <% } %>
+
+        </div>
+            <hr>
+    <!-------------- Table of users ------------------------------- -->
+            <table class="table table-striped table-responsive">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Age</th>
+                        <th>E-mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% for (var x in users) { %>
+                    <tr>
+                        <td scope="row"><%= users[x]['first_name'] %></td>
+                        <td scope="row"><%= users[x]['last_name'] %></td>
+                        <td scope="row"><%= users[x]['age'] %></td>
+                        <td scope="row"><%= users[x]['email'] %></td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+
+    <%- include('base_scripts'); %>
+    </body>
+
+</html>

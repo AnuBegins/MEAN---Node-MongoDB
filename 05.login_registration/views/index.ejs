@@ -1,0 +1,95 @@
+
+<html lang="en">
+    <%- include('base_head'); %>
+
+  <body>
+		<!--Jumbotron-->
+		<div class="jumbotron jumbotron-fluid text-center  elegant-color-dark  z-depth-2">
+            <div class="container">
+                    <h2 class="h1-reponsive mb-4 mt-2 font-bold text-info">Log-in / Registration</h2>
+                    <!-- <p class="lead white-text">A Java Spring app for scheduling events and tracking attendees</p> -->
+            </div>
+        </div>
+
+    <div class="container mx-auto text-center">
+        <!-------------- FLASH Messages------------------------------- -->
+
+        <div class="row">
+            <div class="col-md ">
+ <!---------------------------- LOGIN ------------------------------------------- -->
+            <hr>
+            <h2 class="text-center">Log in</h2>
+            <% if(messages.pwErrors) { %>
+                <% for (var x of messages.pwErrors) { %>
+                    <p class="text-danger"><%= x %></p>
+                <% } %>
+            <% } %>
+                <hr>
+                <form method="POST" action="/login">
+                    <div class="input-group py-2">
+                        <i class="far fa-envelope  fa-fw mr-2 mt-2" aria-hidden="true"></i>
+                        <input type="email" name = "email" class="form-control py-0 "  placeholder="E-mail address" autofocus/>
+                    </div>
+
+                    <div class="input-group py-2">
+                        <i class="fa fa-key fa-1x fa-fw mr-2 mt-2" aria-hidden="true"></i>
+                        <input type="password" name="password" class="form-control py-0" name="password" type="password" placeholder="Password"/>
+                    </div>
+
+                    <div class="text-center">
+                        <input type = "submit" class="btn btn-success btn-md" value='Log In' />
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-1"></div>
+
+<!---------------------------- REGISTRATION ------------------------------------------- -->
+            <div class="col-md ">
+        <!-- <%- JSON.stringify(messages) %>  tip to easily see objects printed in full instead of [object Object] -->
+        <% if(messages.registration) { %> <!-- based on the structure of your messages, determine how to display them -->
+            <% for (var x of messages.registration) { %>
+            <p class="text-danger"><%= x %></p>
+            <% } %>
+        <% } %>
+            <hr>
+            <h2  class="text-center">Register </h2>
+
+            <form method="POST" action="/register" name="register" >
+
+                <div class="input-group margin-bottom-sm py-2">
+                    <i class="far fa-user fa-fw mr-2 mt-2" aria-hidden="true"></i>
+                    <input type="text" name="first_name" class="form-control py-0" placeholder="First Name"/>
+                </div>
+
+                <div class="input-group margin-bottom-sm py-2">
+                    <i class="fa fa-user fa-fw mr-2 mt-2" aria-hidden="true"></i>
+                    <input type="text" name="last_name" class="form-control py-0" placeholder="Last Name"/>
+                </div>
+
+                <div class="input-group margin-bottom-sm py-2">
+                    <i class="far fa-envelope  fa-fw mr-2 mt-2" aria-hidden="true"></i>
+                    <input type="email" name="email" name="email" class="form-control py-0" placeholder="E-mail address"/>
+                </div>
+
+                <div class="input-group margin-bottom-sm py-2">
+                    <i class="fa fa-key fa-fw mr-2 mt-2" aria-hidden="true"></i>
+                    <input  type="password" name="password"  class="form-control py-0"  placeholder="Password"/>
+                </div>
+
+                <div class="input-group margin-bottom-sm py-2">
+                    <i class="fas fa-birthday-cake fa-fw mr-2 mt-2" aria-hidden="true"></i>
+                    <input type="date" name="bday"  class="form-control py-0"  placeholder="Date of Birth"/>
+                </div>
+
+                <div class="text-center">
+                    <input type = "submit" class = " btn btn-indigo btn-md " value = 'REGISTER' />
+                </div>
+
+                </form>
+            </div>
+        </div>
+    <%- include('base_scripts'); %>
+    </body>
+
+</html>

@@ -1,0 +1,23 @@
+
+<html lang="en">
+        <%- include('base_head'); %>
+
+    <body>
+        <div class="container text-center mb-5">
+        <!------------	NAVIGATION BAR ---------------- -->
+            <%- include('base_navbar'); %>
+        </div>
+
+        <div class="container mx-auto">
+            <h1 class="text-info text-center ">User Dashboard</h1>
+
+            <h2><%= user[0].first_name %> <%= user[0].last_name %> </h2>
+            <p>Date of birth: <strong>  <%= user[0].birthday.toDateString() %>  </strong></p>
+            <p>Account active since: <strong> <%= user[0].createdAt.toDateString() %> </strong></p>
+
+        </div>
+        <%- include('base_scripts'); %>
+
+    </body>
+
+</html>

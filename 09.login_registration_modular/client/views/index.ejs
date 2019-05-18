@@ -1,0 +1,93 @@
+
+<html lang="en">
+        <%- include('base_head'); %>
+  <body>
+        <!--Jumbotron-->
+        <div class="jumbotron jumbotron-fluid text-center  elegant-color-dark  z-depth-2">
+            <div class="container">
+                    <h2 class="h1-reponsive text-info">Log-in / Registration Modularized</h2>
+            </div>
+        </div>
+
+        <div class="container mx-auto text-center col-md-4">
+            <div class="row">
+                <div class="col-md ">
+
+                    <ul class="nav nav-tabs md-tabs nav-justified " role="tablist">
+                        <li class="nav-item ">
+                            <a class="nav-link active " data-toggle="tab" href="#login" aria-selected="true"><strong>Log in</strong></a>
+                        </li>
+                        <li class="nav-item "><a class="nav-link" data-toggle="tab" href="#registration"><strong>Register</strong></a></li>
+                    </ul>
+
+                    <div class="tab-content">
+        <!---------------------------- LOGIN ------------------------------------------- -->
+                        <div id="login" class="tab-pane fade show active">
+                                <% if(messages.pwErrors) { %>
+                                    <% for (var x of messages.pwErrors) { %>
+                                        <p class="text-danger"><%= x %></p>
+                                    <% } %>
+                                <% } %>
+                            <form method="POST" action="/login">
+                                <div class="input-group md-form py-2">
+                                    <i class="far fa-envelope fa-fw mr-2 mt-2" aria-hidden="true"></i>
+                                    <input type="email" name = "email" class="form-control "  placeholder="E-mail address" autofocus/>
+                                </div>
+
+                                <div class="input-group md-form py-2">
+                                    <i class="fa fa-key fa-1x fa-fw mr-2 mt-2" aria-hidden="true"></i>
+                                    <input type="password" name="password" class="form-control "  placeholder="Password"/>
+                                </div>
+
+                                <div class="text-center">
+                                    <input type = "submit" class="btn btn-success btn-md" value='Log In' />
+                                </div>
+                            </form>
+                        </div>
+       <!---------------------------- REGISTRATION ------------------------------------------- -->
+                        <div id="registration" class="tab-pane fade show">
+                        <% if(messages.registration) { %> <!-- based on the structure of your messages, determine how to display them -->
+                            <% for (var x of messages.registration) { %>
+                            <p class="text-danger"><%= x %></p>
+                            <% } %>
+                        <% } %>
+                            <form method="POST" action="/register" name="register" >
+                                <div class="input-group md-form py-1">
+                                    <i class="far fa-user fa-fw mr-2 mt-2" aria-hidden="true"></i>
+                                    <input type="text" name="first_name" class="form-control  " placeholder="First Name"/>
+                                </div>
+
+                                <div class="input-group md-form py-1">
+                                    <i class="fa fa-user fa-fw mr-2 mt-2" aria-hidden="true"></i>
+                                    <input type="text" name="last_name" class="form-control" placeholder="Last Name"/>
+                                </div>
+
+                                <div class="input-group md-form py-1">
+                                    <i class="far fa-envelope  fa-fw mr-2 mt-2" aria-hidden="true"></i>
+                                    <input type="email" name="email" name="email" class="form-control " placeholder="E-mail address"/>
+                                </div>
+
+                                <div class="input-group md-form py-1">
+                                    <i class="fa fa-key fa-fw mr-2 mt-2" aria-hidden="true"></i>
+                                    <input  type="password" name="password"  class="form-control "  placeholder="Password"/>
+                                </div>
+
+                                <div class="input-group md-form py-1">
+                                    <i class="fas fa-birthday-cake fa-fw mr-2 mt-2" aria-hidden="true"></i>
+                                    <input type="date" name="bday"  class="form-control " value="Date of Birth" />
+                                </div>
+
+                                <div class="text-center">
+                                    <input type = "submit" class = " btn btn-indigo btn-md " value = 'REGISTER' />
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('base_scripts'); %>
+     </body>
+
+</html>
